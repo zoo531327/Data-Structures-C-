@@ -5,7 +5,7 @@ typedef int ElemType;
 
 //顺序表定义
 typedef struct{
-    ElemType date[MAXSIZE];
+    ElemType data[MAXSIZE];
     int length;
 }SeqList;
 
@@ -21,7 +21,7 @@ int appendElem(SeqList *L,ElemType e){
         return 0;
     }
 
-    L->date[L->length] = e;
+    L->data[L->length] = e;
     L->length++;
     return 1;
 }
@@ -29,9 +29,30 @@ int appendElem(SeqList *L,ElemType e){
 //遍历
 void listElem(SeqList *L){
     for(int i = 0;i < L->length;i++){
-        printf("%d ", L->date[i]);
+        printf("%d ", L->data[i]);
     }
     printf("\n");
+}
+
+//插入数据
+int insertElem(SeqList *L,int pos,ElemType e){
+    if(L->length >= MAXSIZE){
+        printf("表已经满了\n");
+        return 0;
+    }
+    if(pos < 1 || pos > L->length){
+        printf("插入位置错误\n");
+        return 0;
+    }
+
+    if(pos <= L->length){
+        for(int i = L->length-1; i >= pos-1;i--){
+            L->data[i+1] = L->data[i];
+        }
+        L->data[pos-1] = e;
+        L->length++;
+    }
+    return 1;
 }
 
 int main(int argc,char const *argv[]){
@@ -39,11 +60,13 @@ int main(int argc,char const *argv[]){
     SeqList list;
     initList(&list);
     printf("初始化成功，目前长度占用%d\n",list.length);
-    printf("目前占用内存%zu字节\n",sizeof(list.date));
+    printf("目前占用内存%zu字节\n",sizeof(list.data));
     appendElem(&list,88);
     appendElem(&list,45);
     appendElem(&list,43);
     appendElem(&list,17);
+    listElem(&list);
+    insertElem(&list,2,18);
     listElem(&list);
     return 0;
 }
