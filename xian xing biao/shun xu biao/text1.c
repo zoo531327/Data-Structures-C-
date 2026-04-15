@@ -26,6 +26,14 @@ int appendElem(SeqList *L,ElemType e){
     return 1;
 }
 
+//遍历
+void listElem(SeqList *L){
+    for(int i = 0;i < L->length;i++){
+        printf("%d ", L->date[i]);
+    }
+    printf("\n");
+}
+
 int main(int argc,char const *argv[]){
     //声明一个顺序表并初始化
     SeqList list;
@@ -33,8 +41,10 @@ int main(int argc,char const *argv[]){
     printf("初始化成功，目前长度占用%d\n",list.length);
     printf("目前占用内存%zu字节\n",sizeof(list.date));
     appendElem(&list,88);
+    appendElem(&list,45);
+    appendElem(&list,43);
+    appendElem(&list,17);
+    listElem(&list);
     return 0;
 }
-
-
 
