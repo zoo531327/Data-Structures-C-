@@ -62,12 +62,12 @@ int deleteElem(SeqList *L,int pos, ElemType *e){
         return 0;
     }
 
-    if(pos < 1 || pos > L->>length){
+    if(pos < 1 || pos > L->length){
         printf("删除数据位置错误\n");
         return 0;
     }
 
-    *e = L->date(pos-1);
+    *e = L->data[pos-1];
     if(pos < L->length){
         for(int i = pos;i < L->length;i++){
             L->data[i-1] = L->data[i];
