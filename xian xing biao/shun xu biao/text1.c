@@ -77,6 +77,21 @@ int deleteElem(SeqList *L,int pos, ElemType *e){
     return 1;
 }
 
+//查找数据位置
+int findElem(SeqList *L, ElemType e){
+    if (L->length == 0){
+        printf("空列表\n");
+        return 0;
+    }
+
+    for(int i = 0; i < L->length; i++){
+        if(L->data[i] == e){
+            return i+1;
+        }
+    }
+    return 0;
+}
+
 int main(int argc,char const *argv[]){
     //声明一个顺序表并初始化
     SeqList list;
@@ -84,16 +99,18 @@ int main(int argc,char const *argv[]){
     printf("初始化成功，目前长度占用%d\n",list.length);
     printf("目前占用内存%zu字节\n",sizeof(list.data));
     appendElem(&list,88);
-    appendElem(&list,45);
-    appendElem(&list,43);
-    appendElem(&list,17);
+    appendElem(&list,67);
+    appendElem(&list,40);
+    appendElem(&list,8);
+    appendElem(&list,23);
     listElem(&list);
-    insertElem(&list,2,18);
+    insertElem(&list,1,18);
     listElem(&list);
     ElemType delData;
     deleteElem(&list,2,&delData);
     printf("被删除的数据为:%d\n",delData);
     listElem(&list); 
+    printf("%d\n",findElem(&list,40));
     return 0;
 }
 
