@@ -55,6 +55,28 @@ int insertElem(SeqList *L,int pos,ElemType e){
     return 1;
 }
 
+//删除元素
+int deleteElem(SeqList *L,int pos, ElemType *e){
+    if(L->length == 0){
+        printf("空表\n");
+        return 0;
+    }
+
+    if(pos < 1 || pos > L->>length){
+        printf("删除数据位置错误\n");
+        return 0;
+    }
+
+    *e = L->date(pos-1);
+    if(pos < L->length){
+        for(int i = pos;i < L->length;i++){
+            L->data[i-1] = L->data[i];
+        }
+    }
+    L->length--;
+    return 1;
+}
+
 int main(int argc,char const *argv[]){
     //声明一个顺序表并初始化
     SeqList list;
@@ -68,6 +90,10 @@ int main(int argc,char const *argv[]){
     listElem(&list);
     insertElem(&list,2,18);
     listElem(&list);
+    ElemType delData;
+    deleteElem(&list,2,&delData);
+    printf("被删除的数据为:%d\n",delData);
+    listElem(&list); 
     return 0;
 }
 
