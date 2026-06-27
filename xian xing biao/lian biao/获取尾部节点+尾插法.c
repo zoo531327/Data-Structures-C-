@@ -57,9 +57,9 @@ Node *inserttail(Node *tail, elemtype e){
 int main(){
     Node *list = initlist();
     Node *tail = get_tail(list);
-    inserthead(list,10);
-    inserthead(list,20);
-    inserthead(list,30);
+    tail = inserttail(tail,10);
+    tail = inserttail(tail,20);
+    tail = inserttail(tail,30);
     listnode(list);
     return 0;
 }
