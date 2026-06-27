@@ -8,7 +8,7 @@ typedef struct node{
 }Node;
 
 //初始化链表
-Node*initlist(){
+Node *initlist(){
     Node *head = (Node*)malloc(sizeof(Node));
     head->data = 0;
     head->next = NULL;
